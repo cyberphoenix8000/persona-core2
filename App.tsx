@@ -1,8 +1,9 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { QUESTIONS } from './constants.ts';
 import { UserResponse, PersonalityScores, AnalysisResult, Dimension } from './types.ts';
 import { getPersonalityAnalysisAlgorithmic, getDynamicDeepDive } from './services/personalityAlgorithm.ts';
+import { getGeminiPersonalityAnalysis } from './services/geminiService.ts';
 import LikertScale from './components/LikertScale.tsx';
 import PersonalityChart from './components/PersonalityChart.tsx';
 import DichotomySlider from './components/DichotomySlider.tsx';
@@ -10,42 +11,23 @@ import {
   ChevronRight, 
   ChevronLeft, 
   RotateCcw, 
-  Sparkles, 
   Brain, 
   Briefcase, 
   Heart, 
   Target, 
   AlertCircle, 
-  Quote, 
   Zap, 
-  Compass, 
+  Compass as CompassIcon, 
   Users, 
-  GraduationCap, 
-  Layers, 
   Download, 
-  Cpu, 
   Fingerprint,
-  Loader2,
   Activity,
   ChevronDown,
   ShieldCheck,
-  Dna,
-  Trophy,
-  Coffee,
-  MapPin,
-  Flame,
   Star,
   CheckCircle2,
-  XCircle,
   TrendingUp,
   Ghost,
-  Anchor,
-  Shield,
-  Eye,
-  Search,
-  Sword,
-  Compass as CompassIcon,
-  Lightbulb,
   Globe,
   PieChart
 } from 'lucide-react';
@@ -142,15 +124,27 @@ const App: React.FC = () => {
     return { scores: finalScores, typeCode };
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setStep('loading');
-    setTimeout(() => {
-      const { scores: calculatedScores, typeCode } = calculateScores();
-      setScores(calculatedScores);
-      setAnalysis(getPersonalityAnalysisAlgorithmic(calculatedScores, typeCode));
+    
+    // Calculate basic scores for immediate use
+    const { scores: calculatedScores, typeCode } = calculateScores();
+    setScores(calculatedScores);
+
+    try {
+      // Attempt high-fidelity analysis using Gemini 3 Pro
+      const aiAnalysis = await getGeminiPersonalityAnalysis(calculatedScores, typeCode);
+      setAnalysis(aiAnalysis);
       setDynamicInsight(getDynamicDeepDive(calculatedScores, typeCode));
       setStep('results');
-    }, 3000);
+    } catch (error) {
+      console.warn("AI Diagnostic failed, failing back to algorithmic determination.", error);
+      // Deterministic fallback if Gemini service is unavailable
+      setAnalysis(getPersonalityAnalysisAlgorithmic(calculatedScores, typeCode));
+      setDynamicInsight(getDynamicDeepDive(calculatedScores, typeCode));
+      // Artificial delay for UI/UX consistency
+      setTimeout(() => setStep('results'), 2000);
+    }
   };
 
   if (step === 'intro') {
@@ -166,7 +160,7 @@ const App: React.FC = () => {
             Persona <span className="text-[#4f46e5] italic">Core.</span>
           </h1>
           <p className="text-base md:text-lg text-slate-500 mb-12 leading-relaxed font-medium max-w-sm mx-auto">
-            Absolute psychometric determination. 120 nuanced variables. 100% deterministic algorithm. Zero cold reads.
+            Absolute psychometric determination. Powered by Gemini Pro for high-precision cognitive synthesis.
           </p>
           <button 
             onClick={() => setStep('test')} 
