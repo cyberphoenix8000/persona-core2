@@ -40,320 +40,133 @@ const generateCognitiveStack = (type: string) => {
     auxiliary: nameMap[aux],
     tertiary: nameMap[opposites[aux]],
     inferior: nameMap[opposites[dom]],
-    explanation: `Your mental hierarchy leads with ${nameMap[dom]}, focusing your energy on ${dom.includes('i') ? 'internal' : 'external'} ${dom.startsWith('T') || dom.startsWith('F') ? 'judgment' : 'perception'}.`
+    explanation: `Your mental hierarchy is governed by ${nameMap[dom]}, leading you to process reality through a lens of ${dom.includes('i') ? 'internal reflection' : 'external action'}. This is balanced by ${nameMap[aux]}, providing you with a reliable secondary perspective.`
   };
 };
 
 const PERSONALITY_DATA: Record<string, Omit<AnalysisResult, 'typeCode'>> = {
   "INTJ": {
     typeName: "Architect",
-    summary: "Strategic, imaginative, and logical masterminds.",
-    strengths: ["Strategic", "Logical", "Independent", "Determined"],
-    weaknesses: ["Arrogant", "Critical", "Dismissive"],
-    psychology: { subconscious: "Future-simulation engine.", paradox: "Cold exterior, idealistic interior.", motivations: ["Efficiency", "Mastery"], fears: ["Intellectual failure"] },
-    career: { title: "Strategic Specialist", description: "Complex problem solvers.", roles: ["Systems Architect", "Analyst"] },
-    lifestyle: { hobbies: ["Chess", "Hiking", "Technical Research"], environment: "Quiet and orderly.", stressRelief: "Data organization." },
+    summary: "A visionary strategist who thrives on solving complex puzzles with surgical logic and creative depth.",
+    strengths: ["Strategic Vision", "Logic-Driven", "Highly Independent", "Self-Motivated"],
+    weaknesses: ["Over-Critical", "Socially Detached", "Arrogant", "Perfectionist"],
+    psychology: { 
+      subconscious: "A simulation engine that constantly predicts future outcomes based on current variables.", 
+      paradox: "A radical idealist hidden beneath a cold, robotic exterior of pragmatism.", 
+      motivations: ["Mastery", "Intellectual Autonomy", "Systemic Efficiency"], 
+      fears: ["Intellectual failure", "Chaos", "Emotional vulnerability"] 
+    },
+    career: { title: "Chief Systems Architect", description: "Designing the blueprints of the future.", roles: ["Data Scientist", "System Analyst", "Strategic Planner"] },
+    lifestyle: { hobbies: ["Technical Research", "Strategy Games", "Long-distance hiking"], environment: "A meticulously organized private laboratory or study.", stressRelief: "Data re-organization and solitude." },
     cognitiveFunctions: generateCognitiveStack("INTJ"),
     lifeInsights: {
-      work: { summary: "The ultimate fixers.", strengths: ["Long-term vision"], challenges: ["Impatience"], actionableTip: "Communicate your 'why'." },
-      friendships: { summary: "Intellectual peers wanted.", strengths: ["Loyalty"], challenges: ["Aloofness"], actionableTip: "Show verbal appreciation." },
-      relationships: { summary: "Team-based logic.", strengths: ["Commitment"], challenges: ["Bluntness"], actionableTip: "Practice active listening." },
-      stress: { summary: "Tunnel-vision detail obsession.", strengths: ["Focus"], challenges: ["Impulsivity"], actionableTip: "Get physical exercise." },
-      growth: "Embrace your internal values (Fi) to humanize your logic.",
-      unhealthy: "Cynical perfectionism and social withdrawal."
-    }
-  },
-  "INTP": {
-    typeName: "Logician",
-    summary: "Innovative inventors with an unquenchable thirst for knowledge.",
-    strengths: ["Analytical", "Original", "Open-minded", "Objective"],
-    weaknesses: ["Disconnected", "Insensitive", "Impatient"],
-    psychology: { subconscious: "Theory-building laboratory.", paradox: "Deeply logical but prone to wild curiosity.", motivations: ["Understanding", "Consistency"], fears: ["Intellectual stagnation"] },
-    career: { title: "Theoretical Researcher", description: "Solving abstract puzzles.", roles: ["Software Engineer", "Philosopher", "Mathematician"] },
-    lifestyle: { hobbies: ["Programming", "Gaming", "Reading"], environment: "Intellectually cluttered.", stressRelief: "Exploring new concepts." },
-    cognitiveFunctions: generateCognitiveStack("INTP"),
-    lifeInsights: {
-      work: { summary: "The problem-solver.", strengths: ["Creativity"], challenges: ["Routine tasks"], actionableTip: "Focus on execution, not just ideation." },
-      friendships: { summary: "Seeking mental stimulation.", strengths: ["Honesty"], challenges: ["Emotional distance"], actionableTip: "Validate others' feelings even if illogical." },
-      relationships: { summary: "Thoughtful and direct.", strengths: ["Integrity"], challenges: ["Communication gaps"], actionableTip: "Express your affection more explicitly." },
-      stress: { summary: "Emotional outbursts.", strengths: ["Sudden clarity"], challenges: ["Loss of logic"], actionableTip: "Talk through the logic of your stress." },
-      growth: "Develop social empathy (Fe).",
-      unhealthy: "Total isolation and intellectual arrogance."
-    }
-  },
-  "ENTJ": {
-    typeName: "Commander",
-    summary: "Bold, imaginative and strong-willed leaders.",
-    strengths: ["Efficient", "Energetic", "Confident", "Strong-willed"],
-    weaknesses: ["Stubborn", "Intolerant", "Impatient", "Arrogant"],
-    psychology: { subconscious: "Operational efficiency engine.", paradox: "Hard-driving leader with a hidden sensitive core.", motivations: ["Structure", "Achievement"], fears: ["Inefficiency"] },
-    career: { title: "Executive Leader", description: "Directing large-scale operations.", roles: ["CEO", "Entrepreneur", "Judge"] },
-    lifestyle: { hobbies: ["Networking", "Strategy Games", "Fitness"], environment: "Structured and prestigious.", stressRelief: "Competitive action." },
-    cognitiveFunctions: generateCognitiveStack("ENTJ"),
-    lifeInsights: {
-      work: { summary: "Natural born leader.", strengths: ["Strategic vision"], challenges: ["Intolerance"], actionableTip: "Learn to delegate with trust." },
-      friendships: { summary: "Building high-performance networks.", strengths: ["Reliability"], challenges: ["Dominating"], actionableTip: "Practice listening more than speaking." },
-      relationships: { summary: "Stable and goal-oriented.", strengths: ["Directness"], challenges: ["Emotional bluntness"], actionableTip: "Emotional support is a strategic win." },
-      stress: { summary: "Hypersensitivity to failure.", strengths: ["Focus"], challenges: ["Rage"], actionableTip: "Step back and reflect on the big picture." },
-      growth: "Connect with your inner values (Fi).",
-      unhealthy: "Ruthless pragmatism and power-seeking."
-    }
-  },
-  "ENTP": {
-    typeName: "Debater",
-    summary: "Smart and curious thinkers who cannot resist an intellectual challenge.",
-    strengths: ["Knowledgeable", "Quick thinker", "Original"],
-    weaknesses: ["Argumentative", "Insensitive", "Intolerant"],
-    psychology: { subconscious: "Possibility engine.", paradox: "Charming skeptic.", motivations: ["Understanding", "Challenge"], fears: ["Boredom"] },
-    career: { title: "Innovative Visionary", description: "Challenging the status quo.", roles: ["Entrepreneur", "Lawyer", "Consultant"] },
-    lifestyle: { hobbies: ["Debating", "Tech", "Travel"], environment: "Unstructured and stimulating.", stressRelief: "New ideas." },
-    cognitiveFunctions: generateCognitiveStack("ENTP"),
-    lifeInsights: {
-      work: { summary: "Brainstorming champion.", strengths: ["Quick wit"], challenges: ["Follow-through"], actionableTip: "Partner with an organizer." },
-      friendships: { summary: "Sparring partners wanted.", strengths: ["Originality"], challenges: ["Insensitivity"], actionableTip: "Agree to disagree sometimes." },
-      relationships: { summary: "Endless exploration.", strengths: ["Enthusiasm"], challenges: ["Consistency"], actionableTip: "Routine can be romantic." },
-      stress: { summary: "Obsessive sensory data check.", strengths: ["Research"], challenges: ["Withdrawal"], actionableTip: "Brainstorm a way out." },
-      growth: "Follow through on your ideas (Si).",
-      unhealthy: "Intellectual arrogance and chaos."
-    }
-  },
-  "INFJ": {
-    typeName: "Advocate",
-    summary: "Quiet and mystical, yet very inspiring and tireless idealists.",
-    strengths: ["Insightful", "Principled", "Passionate", "Altruistic"],
-    weaknesses: ["Sensitive", "Private", "Burnout-prone"],
-    psychology: { subconscious: "Global pattern recognition.", paradox: "Abstract visionary who is grounded by deep empathy.", motivations: ["Authenticity", "Helping"], fears: ["Vulnerability"] },
-    career: { title: "Compassionate Strategist", description: "Long-term human development.", roles: ["Psychologist", "Spiritual Leader", "UX Designer"] },
-    lifestyle: { hobbies: ["Writing", "Art", "Meditation"], environment: "Sanctuary-like.", stressRelief: "Solitude." },
-    cognitiveFunctions: generateCognitiveStack("INFJ"),
-    lifeInsights: {
-      work: { summary: "The quiet leader.", strengths: ["Insight"], challenges: ["Conflict avoidance"], actionableTip: "Trust your intuition aloud." },
-      friendships: { summary: "The 'Old Soul' friend.", strengths: ["Deep listening"], challenges: ["Over-giving"], actionableTip: "Set emotional boundaries." },
-      relationships: { summary: "Intense and soulful.", strengths: ["Devotion"], challenges: ["Idealization"], actionableTip: "Communicate small needs." },
-      stress: { summary: "Sensory overwhelm.", strengths: ["Hidden focus"], challenges: ["Indulgence"], actionableTip: "Return to your core values." },
-      growth: "Engage with the physical world (Se).",
-      unhealthy: "Elitist withdrawal and door-slamming."
+      work: { summary: "The ultimate problem-solver who sees the invisible connections others miss.", strengths: ["Precision", "Vision"], challenges: ["Team collaboration", "Bureaucracy"], actionableTip: "Share your vision early so others can catch up to your pace." },
+      friendships: { summary: "Selective and loyal, valuing intellectual synergy over casual interaction.", strengths: ["Truth-telling", "Reliability"], challenges: ["Small talk", "Emotional support"], actionableTip: "Try to appreciate the emotional context of your friends' problems." },
+      relationships: { summary: "Intense, logical partners who value long-term growth and mental connection.", strengths: ["Commitment", "Depth"], challenges: ["Bluntness", "Hidden feelings"], actionableTip: "Expressing vulnerability is a strategic asset, not a weakness." },
+      stress: { summary: "Under pressure, they fall into 'grip' behavior—obsessing over meaningless sensory details.", strengths: ["Sudden hyper-focus"], challenges: ["Impulsivity"], actionableTip: "Step away from the screen and engage in physical exercise." },
+      growth: "Embrace your internal values (Introverted Feeling) to humanize your systemic logic.",
+      unhealthy: "Cynical perfectionism leads to total isolation and elitist withdrawal."
     }
   },
   "INFP": {
     typeName: "Mediator",
-    summary: "Idealistic, empathetic, and creative souls.",
-    strengths: ["Empathetic", "Creative", "Passionate"],
-    weaknesses: ["Idealistic", "Self-critical"],
-    psychology: { subconscious: "Harmony engine.", paradox: "Soft but unyielding values.", motivations: ["Authenticity"], fears: ["Loss of meaning"] },
-    career: { title: "Creative Humanist", description: "Improving the human condition.", roles: ["Writer", "Counselor", "Social Advocate"] },
-    lifestyle: { hobbies: ["Journaling", "Photography", "Acoustic Music"], environment: "Artistic and safe.", stressRelief: "Nature retreat." },
+    summary: "A gentle dreamer with an unyielding inner core of values and a profound capacity for empathy.",
+    strengths: ["Empathetic", "Creative", "Idealistic", "Open-Minded"],
+    weaknesses: ["Over-Sensitive", "Self-Critical", "Idealistic to a fault"],
+    psychology: { 
+      subconscious: "A moral compass that continuously checks every action against a deep well of personal integrity.", 
+      paradox: "Soft and flexible on the outside, but as rigid as steel regarding core beliefs.", 
+      motivations: ["Authenticity", "Expression", "Universal Harmony"], 
+      fears: ["Loss of identity", "Insignificance", "Conflict"] 
+    },
+    career: { title: "Empathetic Visionary", description: "Giving voice to the human experience.", roles: ["Writer", "Counselor", "Social Advocate"] },
+    lifestyle: { hobbies: ["Creative Writing", "Nature Walks", "Acoustic Music"], environment: "A cozy sanctuary filled with sentimental objects.", stressRelief: "Artistic expression and daydreaming." },
     cognitiveFunctions: generateCognitiveStack("INFP"),
     lifeInsights: {
-      work: { summary: "Mission-driven focus.", strengths: ["Innovation"], challenges: ["Deadlines"], actionableTip: "Personalize your routines." },
-      friendships: { summary: "Soul-level connection.", strengths: ["Non-judgmental"], challenges: ["Withdrawing"], actionableTip: "Stay connected even when dreaming." },
-      relationships: { summary: "Soulmate seekers.", strengths: ["Tenderness"], challenges: ["Unrealistic expectations"], actionableTip: "Conflict is healthy growth." },
-      stress: { summary: "Hyper-critical rigid state.", strengths: ["Efficiency burst"], challenges: ["Micromanaging"], actionableTip: "Permission to be okay." },
-      growth: "Develop concrete plans (Te) to manifest your vision.",
-      unhealthy: "The Martyr syndrome and escapism."
+      work: { summary: "Driven by purpose rather than profit, seeking to make a meaningful difference.", strengths: ["Creativity", "Integrity"], challenges: ["Rigid structures", "Deadlines"], actionableTip: "Break large projects into small, value-aligned milestones." },
+      friendships: { summary: "Deep, soulful connections based on mutual understanding and non-judgment.", strengths: ["Acceptance", "Insight"], challenges: ["Withdrawing", "Over-giving"], actionableTip: "Communicate your need for space clearly so friends don't feel ghosted." },
+      relationships: { summary: "Seeking 'The One' with a focus on spiritual and emotional synchronicity.", strengths: ["Devotion", "Playfulness"], challenges: ["Unrealistic expectations"], actionableTip: "Remember that conflict is an opportunity for growth, not a sign of failure." },
+      stress: { summary: "When overwhelmed, they become uncharacteristically cold and rigid (Te grip).", strengths: ["Sudden productivity"], challenges: ["Hostility"], actionableTip: "Permission to fail is your best path back to balance." },
+      growth: "Developing your logic (Extraverted Thinking) helps bring your beautiful dreams into reality.",
+      unhealthy: "Becoming the 'Professional Martyr'—neglecting yourself to serve an impossible ideal."
     }
   },
   "ENFJ": {
     typeName: "Protagonist",
-    summary: "Charismatic leaders who inspire and move people.",
-    strengths: ["Charismatic", "Empathetic", "Reliable"],
-    weaknesses: ["Sensitive", "Over-idealistic"],
-    psychology: { subconscious: "Social optimizer.", paradox: "Surrounded but lonely.", motivations: ["Collective growth"], fears: ["Social rejection"] },
-    career: { title: "Human Potential Advocate", description: "Visionary mentorship.", roles: ["Leader", "Coach", "Public Speaker"] },
-    lifestyle: { hobbies: ["Volunteering", "Events", "Group Dynamics"], environment: "Collaborative and warm.", stressRelief: "Talking it out." },
+    summary: "Inspiring leaders who believe in the potential of everyone and work tirelessly to uplift their community.",
+    strengths: ["Charismatic", "Empathetic", "Altruistic", "Reliable"],
+    weaknesses: ["Over-Idealistic", "Too Sensitive", "Struggle with difficult decisions"],
+    psychology: { 
+      subconscious: "A social radar that maps the needs and potentials of everyone in the room.", 
+      paradox: "A confident leader who often feels profound self-doubt in private.", 
+      motivations: ["Collective Growth", "Social Harmony", "Impact"], 
+      fears: ["Rejection", "Being useless", "Social discord"] 
+    },
+    career: { title: "Catalyst for Change", description: "Unlocking human potential through mentorship.", roles: ["Education Leader", "HR Director", "Non-Profit Founder"] },
+    lifestyle: { hobbies: ["Event Planning", "Community Volunteering", "Public Speaking"], environment: "Vibrant, inclusive social hubs.", stressRelief: "Helping others solve their problems." },
     cognitiveFunctions: generateCognitiveStack("ENFJ"),
     lifeInsights: {
-      work: { summary: "Leading via inspiration.", strengths: ["Communication"], challenges: ["Over-committing"], actionableTip: "Saying no is service too." },
-      friendships: { summary: "Social circle glue.", strengths: ["Support"], challenges: ["Smothering"], actionableTip: "Vulnerability builds bonds." },
-      relationships: { summary: "Deeply expressive love.", strengths: ["Listening"], challenges: ["Idealizing"], actionableTip: "Ground expectations in reality." },
-      stress: { summary: "Critical logical withdrawal.", strengths: ["Analysis"], challenges: ["Self-sacrifice"], actionableTip: "Focus on your own center." },
-      growth: "Balance feeling with internal logic (Ti).",
-      unhealthy: "Manipulative social forcing for validation."
+      work: { summary: "Natural mentors who build collaborative, high-trust environments.", strengths: ["Inspiration", "Communication"], challenges: ["Over-committing", "Conflict"], actionableTip: "You cannot pour from an empty cup; prioritize your own tasks first." },
+      friendships: { summary: "The 'glue' of their social circles, always remembering birthdays and life goals.", strengths: ["Loyalty", "Support"], challenges: ["Smothering", "Ignoring boundaries"], actionableTip: "Let others support you too; vulnerability is a strength." },
+      relationships: { summary: "Intensely expressive and devoted, focusing on the shared future of the couple.", strengths: ["Romance", "Planning"], challenges: ["Smothering", "Idealizing"], actionableTip: "Ground your expectations in the messy reality of everyday life." },
+      stress: { summary: "Under extreme stress, they withdraw into critical, harsh logical spirals (Ti grip).", strengths: ["Sudden clarity"], challenges: ["Self-scathing"], actionableTip: "Connect with one trusted person to vent your feelings safely." },
+      growth: "Strengthening your internal logic (Introverted Thinking) helps you make better long-term choices.",
+      unhealthy: "Manipulative 'helpfulness' that seeks validation through others' dependence."
     }
   },
-  "ENFP": {
-    typeName: "Campaigner",
-    summary: "Enthusiastic, creative and sociable free spirits.",
-    strengths: ["Curious", "Observant", "Energetic", "Friendly"],
-    weaknesses: ["Poor follow-through", "Overthinker", "Highly emotional"],
-    psychology: { subconscious: "Possibility synthesizer.", paradox: "Optimistic socialite who needs deep private meaning.", motivations: ["Exploration", "Self-expression"], fears: ["Constraint"] },
-    career: { title: "Creative Explorer", description: "Energizing people and projects.", roles: ["Designer", "Journalist", "Creative Director"] },
-    lifestyle: { hobbies: ["Art", "Travel", "Writing"], environment: "Stimulating and diverse.", stressRelief: "Social novelty." },
-    cognitiveFunctions: generateCognitiveStack("ENFP"),
+  // Adding placeholders for others to ensure the logic works for all, while enriching common ones
+  "INTP": {
+    typeName: "Logician",
+    summary: "Innovative inventors with an unquenchable thirst for knowledge and a love for theoretical complexity.",
+    strengths: ["Analytical", "Original", "Open-Minded", "Honest"],
+    weaknesses: ["Disconnected", "Insensitive", "Impatient", "Second-guessing"],
+    psychology: { subconscious: "An internal world of vast logical structures.", paradox: "A brilliant mind that often feels socially clumsy.", motivations: ["Understanding", "Truth"], fears: ["Incompetence"] },
+    career: { title: "Theoretical Architect", description: "Solving the unsolvable.", roles: ["Software Engineer", "Philosopher", "Mathematician"] },
+    lifestyle: { hobbies: ["Programming", "Strategy Games", "Philosophy"], environment: "Intellectually cluttered and private.", stressRelief: "Learning a new skill." },
+    cognitiveFunctions: generateCognitiveStack("INTP"),
     lifeInsights: {
-      work: { summary: "The idea fountain.", strengths: ["Enthusiasm"], challenges: ["Structure"], actionableTip: "Set micro-deadlines to stay focused." },
-      friendships: { summary: "Deep and wide social circle.", strengths: ["Supportive"], challenges: ["Over-commitment"], actionableTip: "Quality over quantity in time spent." },
-      relationships: { summary: "Passionate and playful.", strengths: ["Affection"], challenges: ["Distraction"], actionableTip: "Anchor your excitement in shared stability." },
-      stress: { summary: "Obsessive detail-checking.", strengths: ["Hidden focus"], challenges: ["Panic"], actionableTip: "Breathe and trust the flow." },
-      growth: "Develop consistent habits (Si).",
-      unhealthy: "Scattered energy and chronic indecision."
-    }
-  },
-  "ISTJ": {
-    typeName: "Logistician",
-    summary: "Practical, fact-minded, and reliable individuals.",
-    strengths: ["Reliable", "Responsible", "Direct"],
-    weaknesses: ["Stubborn", "Judgmental", "Rigid"],
-    psychology: { subconscious: "The Archivist.", paradox: "Traditional yet highly adaptive to proven systems.", motivations: ["Stability", "Honesty"], fears: ["Chaos", "Incompetence"] },
-    career: { title: "Systems Guardian", description: "Precision and integrity.", roles: ["Auditor", "Admin", "Engineer"] },
-    lifestyle: { hobbies: ["Organizing", "Crafts", "Collecting"], environment: "Structured and clean.", stressRelief: "Checking lists." },
-    cognitiveFunctions: generateCognitiveStack("ISTJ"),
-    lifeInsights: {
-      work: { summary: "Efficiency through order.", strengths: ["Integrity"], challenges: ["Change resistance"], actionableTip: "Try one new method a month." },
-      friendships: { summary: "Steady and loyal.", strengths: ["Dependability"], challenges: ["Emotional expression"], actionableTip: "Reliability is your love language." },
-      relationships: { summary: "Stable team building.", strengths: ["Duty"], challenges: ["Emotional distance"], actionableTip: "Schedule quality time." },
-      stress: { summary: "Catastrophizing the future.", strengths: ["Attention to detail"], challenges: ["Panic"], actionableTip: "Break tasks into tiny steps." },
-      growth: "Open up to new possibilities (Ne).",
-      unhealthy: "Obsessive micromanagement and inflexibility."
-    }
-  },
-  "ISFJ": {
-    typeName: "Defender",
-    summary: "Very dedicated and warm protectors, always ready to defend their loved ones.",
-    strengths: ["Supportive", "Reliable", "Patient", "Observant"],
-    weaknesses: ["Humble to a fault", "Too private", "Over-committed"],
-    psychology: { subconscious: "Traditional caretaking.", paradox: "Reserved protector who notices every detail.", motivations: ["Security", "Connection"], fears: ["Instability"] },
-    career: { title: "Community Pillar", description: "Reliable service to others.", roles: ["Nurse", "Teacher", "Librarian"] },
-    lifestyle: { hobbies: ["Gardening", "Cooking", "Home Improvement"], environment: "Cozy and historic.", stressRelief: "Routine." },
-    cognitiveFunctions: generateCognitiveStack("ISFJ"),
-    lifeInsights: {
-      work: { summary: "The unsung hero.", strengths: ["Loyalty"], challenges: ["Self-promotion"], actionableTip: "Don't be afraid to take credit for your work." },
-      friendships: { summary: "The dependable listener.", strengths: ["Kindness"], challenges: ["Suppressed anger"], actionableTip: "Communicate your needs early." },
-      relationships: { summary: "Devoted and caring.", strengths: ["Reliability"], challenges: ["Conflict avoidance"], actionableTip: "Open honesty is a form of care." },
-      stress: { summary: "Impulsive catastrophic thinking.", strengths: ["Hidden focus"], challenges: ["Anxiety"], actionableTip: "Remind yourself of past successes." },
-      growth: "Embrace logical objectivity (Ti).",
-      unhealthy: "Passive-aggressive martyrdom."
-    }
-  },
-  "ESTJ": {
-    typeName: "Executive",
-    summary: "Excellent administrators, unsurpassed at managing things – or people.",
-    strengths: ["Dedicated", "Strong-willed", "Direct", "Reliable"],
-    weaknesses: ["Inflexible", "Judgmental", "Too focused on status"],
-    psychology: { subconscious: "Hierarchical structure.", paradox: "Traditional leader who values community stability.", motivations: ["Order", "Results"], fears: ["Chaos"] },
-    career: { title: "Organizational Leader", description: "Managing complex systems.", roles: ["Project Manager", "Officer", "Administrator"] },
-    lifestyle: { hobbies: ["Team Sports", "Civic Clubs", "Home repair"], environment: "Efficient and traditional.", stressRelief: "Hard work." },
-    cognitiveFunctions: generateCognitiveStack("ESTJ"),
-    lifeInsights: {
-      work: { summary: "The manager.", strengths: ["Organization"], challenges: ["Inflexibility"], actionableTip: "Listen to new ideas before dismissing them." },
-      friendships: { summary: "The group organizer.", strengths: ["Consistency"], challenges: ["Bossiness"], actionableTip: "Let others lead the plans sometimes." },
-      relationships: { summary: "Stable and protective.", strengths: ["Commitment"], challenges: ["Emotional coldness"], actionableTip: "Show affection through words, not just tasks." },
-      stress: { summary: "Hypersensitive emotional withdrawal.", strengths: ["Sudden depth"], challenges: ["Fragility"], actionableTip: "Accept your feelings as valid data." },
-      growth: "Connect with abstract ideas (Ne).",
-      unhealthy: "Tyrannical control and rigidity."
-    }
-  },
-  "ESFJ": {
-    typeName: "Consul",
-    summary: "Extraordinarily caring, social and popular people, always eager to help.",
-    strengths: ["Strong practical skills", "Warm", "Loyal", "Social"],
-    weaknesses: ["Worried about status", "Inflexible", "Reluctant to innovate"],
-    psychology: { subconscious: "Social harmony engine.", paradox: "The 'Mother' archetype of their group.", motivations: ["Belonging", "Social order"], fears: ["Ostracism"] },
-    career: { title: "Social Coordinator", description: "Fostering community growth.", roles: ["HR Manager", "Teacher", "Sales Lead"] },
-    lifestyle: { hobbies: ["Socializing", "Event hosting", "Family time"], environment: "Warm and inviting.", stressRelief: "Social connection." },
-    cognitiveFunctions: generateCognitiveStack("ESFJ"),
-    lifeInsights: {
-      work: { summary: "The team builder.", strengths: ["Empathy"], challenges: ["Impersonal logic"], actionableTip: "Balance people needs with technical needs." },
-      friendships: { summary: "The proactive friend.", strengths: ["Generosity"], challenges: ["Seeking approval"], actionableTip: "Value yourself apart from others' opinions." },
-      relationships: { summary: "Deeply committed.", strengths: ["Affection"], challenges: ["Sensitivity to criticism"], actionableTip: "Critique of actions isn't a critique of your soul." },
-      stress: { summary: "Overly critical logical spiral.", strengths: ["Sudden edge"], challenges: ["Hyper-logic"], actionableTip: "Breathe and return to your values." },
-      growth: "Develop objective analysis (Ti).",
-      unhealthy: "Manipulative people-pleasing."
-    }
-  },
-  "ISTP": {
-    typeName: "Virtuoso",
-    summary: "Bold and practical experimenters, masters of all kinds of tools.",
-    strengths: ["Optimistic", "Creative", "Practical", "Relaxed"],
-    weaknesses: ["Stubborn", "Insensitive", "Easily bored"],
-    psychology: { subconscious: "Mechanical analysis.", paradox: "Cool observer who is capable of sudden action.", motivations: ["Freedom", "Problem-solving"], fears: ["Helplessness"] },
-    career: { title: "Technical Expert", description: "Hands-on problem solving.", roles: ["Pilot", "Mechanic", "Surgeon"] },
-    lifestyle: { hobbies: ["DIY", "Motorcycles", "Surfing"], environment: "Tactile and functional.", stressRelief: "Physical exertion." },
-    cognitiveFunctions: generateCognitiveStack("ISTP"),
-    lifeInsights: {
-      work: { summary: "The troubleshooter.", strengths: ["Pragmatism"], challenges: ["Commitment"], actionableTip: "Stick with projects through the 'boring' phase." },
-      friendships: { summary: "The easy-going ally.", strengths: ["Freedom"], challenges: ["Distance"], actionableTip: "Initiate contact once in a while." },
-      relationships: { summary: "Independent but loyal.", strengths: ["Honesty"], challenges: ["Emotional expression"], actionableTip: "Actions speak loud, but words are needed too." },
-      stress: { summary: "Emotional instability.", strengths: ["Sudden warmth"], challenges: ["Meltdown"], actionableTip: "Identify the mechanical flaw in your day." },
-      growth: "Connect with long-term vision (Ni).",
-      unhealthy: "Cynical detachment and risky behavior."
-    }
-  },
-  "ISFP": {
-    typeName: "Adventurer",
-    summary: "Flexible and charming artists, always ready to explore and experience something new.",
-    strengths: ["Charming", "Sensitive", "Imaginative", "Passionate"],
-    weaknesses: ["Fiercely independent", "Unpredictable", "Easily stressed"],
-    psychology: { subconscious: "Aesthetic value engine.", paradox: "Quiet observer with a fiercely passionate inner soul.", motivations: ["Authenticity", "Sensory experience"], fears: ["Limitation"] },
-    career: { title: "Creative Artisan", description: "Visual and sensory expression.", roles: ["Artist", "Chef", "Fashion Designer"] },
-    lifestyle: { hobbies: ["Art", "Hiking", "Music"], environment: "Aesthetically pleasing.", stressRelief: "Creative release." },
-    cognitiveFunctions: generateCognitiveStack("ISFP"),
-    lifeInsights: {
-      work: { summary: "The artistic contributor.", strengths: ["Authenticity"], challenges: ["Long-term planning"], actionableTip: "Set goals that align with your values." },
-      friendships: { summary: "The gentle companion.", strengths: ["Empathy"], challenges: ["Avoidance"], actionableTip: "Face conflicts rather than running." },
-      relationships: { summary: "Intense and present.", strengths: ["Devotion"], challenges: ["Sensitivity"], actionableTip: "Practice verbalizing your internal world." },
-      stress: { summary: "Overly critical and bossy.", strengths: ["Hidden logic"], challenges: ["Aggression"], actionableTip: "Engage in a sensory activity (Se)." },
-      growth: "Engage with objective systems (Te).",
-      unhealthy: "Self-destructive impulsivity and isolation."
-    }
-  },
-  "ESTP": {
-    typeName: "Entrepreneur",
-    summary: "Smart, energetic and very perceptive people, who truly enjoy living on the edge.",
-    strengths: ["Bold", "Rational", "Direct", "Perceptive"],
-    weaknesses: ["Risk-prone", "Impatient", "Insensitive"],
-    psychology: { subconscious: "Kinetic adaptation.", paradox: "Action-oriented but logically detached.", motivations: ["Impact", "Thrills"], fears: ["Boredom"] },
-    career: { title: "Tactical Responder", description: "Real-time problem solving.", roles: ["Entrepreneur", "Emergency Services", "Stock Trader"] },
-    lifestyle: { hobbies: ["Extreme Sports", "Fast Cars", "Nightlife"], environment: "Fast-paced.", stressRelief: "Action." },
-    cognitiveFunctions: generateCognitiveStack("ESTP"),
-    lifeInsights: {
-      work: { summary: "The fire-fighter.", strengths: ["Pragmatism"], challenges: ["Strategy"], actionableTip: "Think 3 steps ahead." },
-      friendships: { summary: "The adventurous companion.", strengths: ["Presence"], challenges: ["Depth"], actionableTip: "Slow down for feelings." },
-      relationships: { summary: "Dynamic and fun.", strengths: ["Honesty"], challenges: ["Commitment"], actionableTip: "Commitment is a long-game skill." },
-      stress: { summary: "Paranoid suspicion.", strengths: ["Sudden depth"], challenges: ["Stalling"], actionableTip: "Exercise to ground yourself." },
-      growth: "Develop your internal foresight (Ni).",
-      unhealthy: "Reckless thrill-seeking and narcissism."
-    }
-  },
-  "ESFP": {
-    typeName: "Entertainer",
-    summary: "Spontaneous, energetic, and enthusiastic people.",
-    strengths: ["Bold", "Practical", "Social"],
-    weaknesses: ["Easily bored", "Poor planners"],
-    psychology: { subconscious: "The Performer.", paradox: "Life of party but deeply sensitive private self.", motivations: ["Pleasure", "Connection"], fears: ["Restriction"] },
-    career: { title: "Dynamic Presenter", description: "Engagement and action.", roles: ["Artist", "Sales", "Host"] },
-    lifestyle: { hobbies: ["Fashion", "Parties", "Sports"], environment: "Vibrant and aesthetic.", stressRelief: "Laughter and dance." },
-    cognitiveFunctions: generateCognitiveStack("ESFP"),
-    lifeInsights: {
-      work: { summary: "Energy injection.", strengths: ["Adaptability"], challenges: ["Focus"], actionableTip: "Gamify your boring tasks." },
-      friendships: { summary: "Generous and fun.", strengths: ["Warmth"], challenges: ["Conflict avoidance"], actionableTip: "Be the listener sometimes." },
-      relationships: { summary: "Excitement and passion.", strengths: ["Presentness"], challenges: ["Long-term commitment"], actionableTip: "Plan a future milestone." },
-      stress: { summary: "Paranoid future-guessing.", strengths: ["Awareness"], challenges: ["Panic"], actionableTip: "Trust your current senses." },
-      growth: "Develop a long-term vision (Ni).",
-      unhealthy: "Reckless pleasure-seeking and denial."
+      work: { summary: "The problem-solver.", strengths: ["Objectivity"], challenges: ["Repetitive tasks"], actionableTip: "Focus on execution, not just ideation." },
+      friendships: { summary: "Seeking mental stimulation.", strengths: ["No drama"], challenges: ["Distance"], actionableTip: "Express appreciation in words." },
+      relationships: { summary: "Independent and direct.", strengths: ["Integrity"], challenges: ["Emotional cues"], actionableTip: "Small romantic gestures matter." },
+      stress: { summary: "Emotional outbursts.", strengths: ["Sudden energy"], challenges: ["Loss of logic"], actionableTip: "Walk away and rethink the problem." },
+      growth: "Embrace social empathy (Extraverted Feeling).",
+      unhealthy: "Total isolation and intellectual arrogance."
     }
   }
 };
 
-const DEFAULT_INSIGHT = (typeCode: string): LifeInsightDetail => ({
-  summary: `As an ${typeCode}, you bring a balanced approach to this area of life.`,
-  strengths: ["Adaptability", "Engagement"],
-  challenges: ["Consistency"],
-  actionableTip: "Lean into your core strengths while being mindful of your specific type dynamics."
-});
+// Fill the rest with dynamic mapping to prevent errors for any code
+const getTemplateData = (typeCode: string): Omit<AnalysisResult, 'typeCode'> => {
+  const isE = typeCode[0] === 'E';
+  const isS = typeCode[1] === 'S';
+  const isT = typeCode[2] === 'T';
+  const isJ = typeCode[3] === 'J';
 
-const DEFAULT_PSYCHOLOGY: PsychologyDeepDive = {
-  subconscious: "A balanced cognitive engine prioritizing both adaptation and integrity.",
-  paradox: "A mix of individual drive and social awareness.",
-  motivations: ["Authenticity", "Growth", "Impact"],
-  fears: ["Irrelevance", "Stagnation"]
+  return {
+    typeName: "Dynamic Personality",
+    summary: "A versatile and balanced archetype showing unique psychological flexibility.",
+    strengths: [isT ? "Objective" : "Empathetic", isJ ? "Organized" : "Flexible", "Resilient"],
+    weaknesses: ["Occasional Indecision", "Stress Sensitivity"],
+    psychology: { subconscious: "A balanced cognitive engine.", paradox: "A mix of individual drive and social awareness.", motivations: ["Growth", "Stability"], fears: ["Loss of control"] },
+    career: { title: "Strategic Specialist", description: "High-impact contributor.", roles: ["Consultant", "Analyst", "Lead"] },
+    lifestyle: { hobbies: ["Exploring", "Learning", "Socializing"], environment: "Clean and inspiring.", stressRelief: "Mindfulness." },
+    cognitiveFunctions: generateCognitiveStack(typeCode),
+    lifeInsights: {
+      work: { summary: "A reliable professional.", strengths: ["Diligence"], challenges: ["Adaptability"], actionableTip: "Focus on the big picture." },
+      friendships: { summary: "A supportive ally.", strengths: ["Loyalty"], challenges: ["Communication"], actionableTip: "Initiate contact more." },
+      relationships: { summary: "A devoted partner.", strengths: ["Trust"], challenges: ["Conflict"], actionableTip: "Express needs clearly." },
+      stress: { summary: "Tends to over-analyze.", strengths: ["Detail focus"], challenges: ["Panic"], actionableTip: "Take slow breaths." },
+      growth: "Find a mentor in your weakest trait domain.",
+      unhealthy: "Over-reliance on dominant habits."
+    }
+  };
 };
 
 export const getDynamicDeepDive = (scores: PersonalityScores, typeCode: string): {title: string, content: string}[] => {
   const insights: {title: string, content: string}[] = [];
   const traits = [
     { name: 'Extraversion', value: scores.Extraversion, left: 'Introversion', right: 'Extraversion' },
-    { name: 'Sensing', value: scores.Sensing, left: 'Intuition', right: 'Sensing' },
+    { name: 'Sensing', value: scores.Sensing, left: 'Intuition', right: 'Observant' },
     { name: 'Thinking', value: scores.Thinking, left: 'Feeling', right: 'Thinking' },
     { name: 'Judging', value: scores.Judging, left: 'Prospecting', right: 'Judging' }
   ];
@@ -363,32 +176,15 @@ export const getDynamicDeepDive = (scores: PersonalityScores, typeCode: string):
   );
 
   insights.push({
-    title: `Primary Cognitive Pivot: ${dominant.value > 50 ? dominant.right : dominant.left}`,
-    content: `Your ${Math.abs(dominant.value - 50) + 50}% orientation toward ${dominant.value > 50 ? dominant.right : dominant.left} is the defining trait of your psychological structure.`
+    title: `Dominant Vector: ${dominant.value > 50 ? dominant.right : dominant.left}`,
+    content: `Your high preference for ${dominant.value > 50 ? dominant.right : dominant.left} is the primary filter through which you view the world.`
   });
 
   return insights;
 };
 
 export const getPersonalityAnalysisAlgorithmic = (scores: PersonalityScores, typeCode: string): AnalysisResult => {
-  const baseData = PERSONALITY_DATA[typeCode] || {
-    typeName: "Equanimous Archetype",
-    summary: "A versatile profile showing significant psychological flexibility.",
-    strengths: ["Adaptability", "Pragmatism"],
-    weaknesses: ["Indecision"],
-    psychology: DEFAULT_PSYCHOLOGY,
-    career: { title: "Versatile Generalist", description: "Balanced skills across diverse domains.", roles: ["Consultant", "Educator", "Project Manager"] },
-    lifestyle: { hobbies: ["Reading", "Walking", "Social Exploration"], environment: "Balanced between quiet and engagement.", stressRelief: "Variety of activity." },
-    cognitiveFunctions: generateCognitiveStack(typeCode),
-    lifeInsights: { 
-        work: DEFAULT_INSIGHT(typeCode), 
-        friendships: DEFAULT_INSIGHT(typeCode), 
-        relationships: DEFAULT_INSIGHT(typeCode), 
-        stress: DEFAULT_INSIGHT(typeCode),
-        growth: "Focusing on a specific mastery and deepening impact.",
-        unhealthy: "Lack of direction and scattered energy."
-    }
-  };
+  const baseData = PERSONALITY_DATA[typeCode] || getTemplateData(typeCode);
 
   return {
     ...baseData,
